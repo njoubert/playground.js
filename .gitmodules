@@ -1,0 +1,6 @@
+[submodule "lib/inheritancejs"]
+	path = lib/inheritancejs
+	url = git@github.com:njoubert/inheritance.js.git
+[submodule "lib/requirejs"]
+	path = lib/requirejs
+	url = https://github.com/jrburke/requirejs.git
