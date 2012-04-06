@@ -1,37 +1,30 @@
+
 require.config({
   paths: {
       "Class": "../lib/inheritancejs/Class"
   },
 });
 
+
 require(
   
-  ["Class"],
+  ["Class", "utils"],
   
-  function(Class) {
+  function(Class, utils) {
 
-      var Mammal = Class.extend({
-        init: function(name) {
-          this.name = name;
-        }
-      }, "Mammal"); 
+    var exports = {};
 
-
-      var Snake = Mammal.extend({
-        init: function(name) {
-          this.parent.init.call(this, name);
-        },
-        slither: function() {
-          return this.name + " says sssSSSSssss";
-        }
-      });
-
-      mySnake = new Snake("Billybob");
-      console.log(mySnake.slither());
-
-      if (mySnake instanceof Mammal) {
-        console.log("instanceof works")
-      }  
+    utils.mixin(exports, utils);
+    
+    exports.Class = Class;
+    
+    
+    //Make it global.
+    if (window.Play) {
+      throw new Error("A instance of Play already exists.");
+    } else {
+      Play = window.Play = exports;
+    }
     
   }
   
